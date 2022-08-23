@@ -1,6 +1,4 @@
-﻿using System;
-using IronBarCode;
-using System.Drawing;
+﻿using IronBarCode;
 
 namespace IronBarcode_Sample_Project
 {
@@ -11,8 +9,6 @@ namespace IronBarcode_Sample_Project
             // Get a free license key instantly: https://ironsoftware.com/csharp/barcode/#trial-license
             IronBarCode.License.LicenseKey = "ENTER-KEY-HERE";
 
-            Console.WriteLine("Welcome to the IronBarcode 'Barcode Image Generator' Tutorial!");
-
             // Creating a barcode is as simple as:
             var myBarcode = BarcodeWriter.CreateBarcode("12345", BarcodeWriterEncoding.EAN8);
 
@@ -21,12 +17,13 @@ namespace IronBarcode_Sample_Project
                                                            
             // Reading a barcode is easy with IronBarcode:
             var resultFromFile = BarcodeReader.Read(@"file/barcode.png"); // From a file
-            var resultFromBitMap = BarcodeReader.Read(new Bitmap("barcode.bmp")); // From a bitmap
             var resultFromPdf = BarcodeReader.ReadPdf(@"file/mydocument.pdf"); // From PDF use ReadPdf
-                                                                               // After creating a barcode, we may choose to resize and save which is easily done with:
+
+            // After creating a barcode, we may choose to resize and save which is easily done with:
             var myNewBarcode = BarcodeWriter.CreateBarcode("12345", BarcodeWriterEncoding.EAN8);
             myNewBarcode.ResizeTo(400, 100);
             myNewBarcode.SaveAsImage("myBarcodeResized.jpeg");
+            
             // To set more options and optimization with your Barcode Reading,
             // Please utilize the BarcodeReaderOptions parameter of read:
             BarcodeReaderOptions myOptionsExample = new BarcodeReaderOptions()
@@ -52,9 +49,6 @@ namespace IronBarcode_Sample_Project
             };
             // And, apply:
             var results = BarcodeReader.Read("barcode.png", myOptionsExample);
-
-            Console.WriteLine("IronBarcode Tutorial Complete! Press any key to exit!");
-            Console.ReadKey();
 
         }
     }
